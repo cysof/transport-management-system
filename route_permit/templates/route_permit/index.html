@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 d-flex align-items-center">
+                      <li class="breadcrumb-item"><a href="route_permit:index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Search Vehicle</li>
+                    </ol>
+                  </nav>
+                <h1 class="mb-0 fw-bold">Vehicle Details</h1> 
+            </div>
+           
+        </div>
+    </div>
+
+  
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">CNIC</th>
+                                    <th scope="col">Vehicle Number</th>
+                                    <th scope="col">Chassis Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for vehicle in vehcile_details %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    <td>{{vehicle.owner.CNIC}}</td>
+                                    <td>{{vehicle.vehicle_number}}</td>
+                                    <td>{{vehicle.Chasis_number}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+        
+    </div>
+    
+       
+</div>
+{% endblock content %}

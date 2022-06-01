@@ -7,6 +7,6 @@ from django .core.mail import send_mail
 
 
 def index(request):
-    data = VehicleDetail.objects.all()
-    context = {'datafromdatabase':data}
-    return render(request, 'index.html', context)
+    vehicles = VehicleDetail.objects.all()
+    context = {'vehcile_details':vehicles}
+    return render(request, 'route_permit/index.html', context)

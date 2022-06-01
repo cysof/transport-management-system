@@ -1,5 +1,7 @@
-import os
+from distutils.log import debug
 from pathlib import Path
+import os
+import mimetypes
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +31,9 @@ INSTALLED_APPS = [
     
     #LOCAL APP
     'route_permit',
+    'add_vehicle',
     'contact_us',
+    'add_owner'
 ]
 
 MIDDLEWARE = [
@@ -108,17 +112,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+
+
+STATIC_URL = '/static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+mimetypes.add_type("text/css", ".css", True)
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.yahoo.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'cp4reallife@yahoo.com'
-EMAIL_HOST_PASSWORD = '19911111Cy@'
+
+STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/assets/images')
+MEDIA_URL = '/media/'
+if DEBUG:
+    STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+    ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
